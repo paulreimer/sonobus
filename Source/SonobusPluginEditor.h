@@ -298,7 +298,9 @@ private:
     std::unique_ptr<SonoDrawableButton> mMainLinkButton;
     std::unique_ptr<Drawable> mMainLinkArrow;
 
+#if JUCE_IOS
     std::unique_ptr<Slider> mInGainSlider;
+#endif
 
     std::unique_ptr<TextButton> mInMixerButton;
 
@@ -332,7 +334,9 @@ private:
     std::unique_ptr<DrawableRectangle> mFileAreaBg;
 
 
+#if JUCE_IOS
     std::unique_ptr<Label> mInGainLabel;
+#endif
     std::unique_ptr<Label> mDryLabel;
     std::unique_ptr<Label> mWetLabel;
     std::unique_ptr<Label> mOutGainLabel;
@@ -530,6 +534,10 @@ private:
     std::unique_ptr<Viewport> mMainViewport;
     std::unique_ptr<Component> mMainContainer;
     std::unique_ptr<PeersContainerView> mPeerContainer;
+
+#if JUCE_IOS
+    std::unique_ptr<Component> mInGainContainer;
+#endif
 
     std::unique_ptr<Viewport> mInputChannelsViewport;
     std::unique_ptr<ChannelGroupsView> mInputChannelsContainer;
