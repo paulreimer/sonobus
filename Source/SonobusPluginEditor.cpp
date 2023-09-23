@@ -673,7 +673,6 @@ SonobusAudioProcessorEditor::SonobusAudioProcessorEditor (SonobusAudioProcessor&
     smallerEditorFontsize = 16;
 #endif
     
-    mInGainAttachment     = std::make_unique<AudioProcessorValueTreeState::SliderAttachment> (p.getValueTreeState(), SonobusAudioProcessor::paramInGain, *mInGainSlider);
     mDryAttachment     = std::make_unique<AudioProcessorValueTreeState::SliderAttachment> (p.getValueTreeState(), SonobusAudioProcessor::paramDry, *mDrySlider);
     mWetAttachment     = std::make_unique<AudioProcessorValueTreeState::SliderAttachment> (p.getValueTreeState(), SonobusAudioProcessor::paramWet, *mOutGainSlider);
     mMainSendMuteAttachment = std::make_unique<AudioProcessorValueTreeState::ButtonAttachment> (p.getValueTreeState(), SonobusAudioProcessor::paramMainSendMute, *mMainMuteButton);
@@ -4659,13 +4658,12 @@ void SonobusAudioProcessorEditor::updateLayout()
     int inmixw = 74;
     int choicew = inmixw + mutew + 3;
 
-    inGainBox.items.clear();
-    inGainBox.flexDirection = FlexBox::Direction::row;
-    //inGainBox.items.add(FlexItem(minKnobWidth, minitemheight, *mInGainSlider).withMargin(0).withFlex(1));
-    //inGainBox.items.add(FlexItem(choicew, minitemheight, *mSendChannelsLabel).withMargin(0).withFlex(0.5));
-    inGainBox.items.add(FlexItem(2, 6).withMargin(0).withFlex(0.1));
-    inGainBox.items.add(FlexItem(choicew, minitemheight, *mSendChannelsChoice).withMargin(0).withFlex(1).withMaxWidth(160));
-    inGainBox.items.add(FlexItem(2, 6).withMargin(0).withFlex(0.1));
+    sendChannelsBox.items.clear();
+    sendChannelsBox.flexDirection = FlexBox::Direction::row;
+    //sendChannelsBox.items.add(FlexItem(choicew, minitemheight, *mSendChannelsLabel).withMargin(0).withFlex(0.5));
+    sendChannelsBox.items.add(FlexItem(2, 6).withMargin(0).withFlex(0.1));
+    sendChannelsBox.items.add(FlexItem(choicew, minitemheight, *mSendChannelsChoice).withMargin(0).withFlex(1).withMaxWidth(160));
+    sendChannelsBox.items.add(FlexItem(2, 6).withMargin(0).withFlex(0.1));
 
     dryBox.items.clear();
     dryBox.flexDirection = FlexBox::Direction::row;
@@ -4696,7 +4694,7 @@ void SonobusAudioProcessorEditor::updateLayout()
 
     inputLeftBox.items.clear();
     inputLeftBox.flexDirection = FlexBox::Direction::column;
-    inputLeftBox.items.add(FlexItem(choicew + 4, minitemheight, inGainBox).withMargin(0).withFlex(1)); //.withMaxWidth(isNarrow ? 160 : 120));
+    inputLeftBox.items.add(FlexItem(choicew + 4, minitemheight, sendChannelsBox).withMargin(0).withFlex(1)); //.withMaxWidth(isNarrow ? 160 : 120));
     inputLeftBox.items.add(FlexItem(4, 4).withMargin(0).withFlex(0));
     inputLeftBox.items.add(FlexItem(mutew+inmixw + 10, minitemheight, inputPannerBox).withMargin(0).withFlex(1)); //.withMaxWidth(maxPannerWidth));
 

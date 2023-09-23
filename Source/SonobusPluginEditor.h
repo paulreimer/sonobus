@@ -626,7 +626,7 @@ private:
     FlexBox remoteSourceBox;
     FlexBox remoteSinkBox;
     FlexBox paramsBox;
-    FlexBox inGainBox;
+    FlexBox sendChannelsBox;
     FlexBox dryBox;
     FlexBox wetBox;
     FlexBox toolbarBox;
@@ -697,7 +697,6 @@ private:
     
     std::unique_ptr<CustomTooltipWindow> tooltipWindow;
     
-    std::unique_ptr<AudioProcessorValueTreeState::SliderAttachment> mInGainAttachment;
     std::unique_ptr<AudioProcessorValueTreeState::SliderAttachment> mDryAttachment;
     std::unique_ptr<AudioProcessorValueTreeState::SliderAttachment> mWetAttachment;
     std::unique_ptr<AudioProcessorValueTreeState::ButtonAttachment> mMainSendMuteAttachment;
